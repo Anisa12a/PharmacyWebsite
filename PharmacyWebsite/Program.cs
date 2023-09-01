@@ -24,6 +24,11 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddSingleton<FileExtensionContentTypeProvider>();
 
+builder.Services.AddCors(p => p.AddPolicy("corsapp", builder =>
+{
+    builder.WithOrigins("*").AllowAnyMethod().AllowAnyHeader();
+}));
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -37,7 +42,19 @@ app.UseHttpsRedirection();
 
 app.UseRouting();
 
+app.UseHttpsRedirection();
+app.UseRouting();
+app.UseCors("corsapp");
 app.UseAuthorization();
+
+
+
+//app cors
+
+
+//app.UseCors(prodCorsPolicy);
+
+app.MapControllers();
 
 app.UseEndpoints(endpoints =>
 {
@@ -45,3 +62,4 @@ app.UseEndpoints(endpoints =>
 });
 
 app.Run();
+

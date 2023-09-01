@@ -7,31 +7,16 @@ namespace PharmacyWebsite.Entities
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public int ProductId { get; set; }
+        public int id { get; set; }
 
         [Required]
-        public string ProductName { get; set; } = string.Empty;
+        public string name { get; set; } = string.Empty;
 
         [Required]
         [MaxLength(350)]
-        public string Description { get; set; } = string.Empty;
+        public string description { get; set; } = string.Empty;
 
         [Required]
-        public string Category { get; set; } = string.Empty;
-
-        [Required]
-        public decimal Price { get; set; }
-
-        [Required]
-        public string Quantity { get; set; } = string.Empty;
-
-        [Required]
-        public string Manufacturer { get; set; } = string.Empty;
-
-        [Required]
-        public string DosageForm { get; set; } = string.Empty;
-
-        [Required]
-        public int QuantityInStock { get; set; }
+        public string imageURL { get; set; } = string.Empty;
     }
 }
